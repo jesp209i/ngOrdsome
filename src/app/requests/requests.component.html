@@ -1,0 +1,7 @@
+<h2>Mine forespørgsler</h2>
+<ul>
+  <li *ngFor="let request of requests" (click)="onSelect(request)">
+    <span class="badge">{{request.id}}</span> {{request.textToTranslate}} <br />
+    Fra {{request.languageOrigin}} til {{request.languageTarget}}.
+  </li>
+</ul>
