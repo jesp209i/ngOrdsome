@@ -1,9 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { RequestDetailComponent } from './request-detail/request-detail.component';
 import { RequestsComponent } from './requests/requests.component';
+
 
 @NgModule({
   declarations: [
@@ -12,7 +15,9 @@ import { RequestsComponent } from './requests/requests.component';
     RequestsComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -16,7 +16,7 @@ export class ApiService {
     private http: HttpClient) {
   }
 
-  private baseUrl = 'http://localhost:58882/api/';
+  private baseUrl = 'http://127.0.0.1:58882/api/';
   private createAnswerUrl = 'answers/create';
   private createRequestUrl = 'requests/create';
   private getRequestsUrl = 'requests/getall';
