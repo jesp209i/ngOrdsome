@@ -1,11 +1,19 @@
 <div *ngIf="request">
 
   <h2>Forespørgsel</h2>
-  <div><span>id: </span>{{request.id}}</div>
   <div>
-    <label>name:
-      <input [(ngModel)]="hero.name" placeholder="name"/>
-    </label>
+    <p>Originalteksten er på: {{request.languageOrigin}} </p>
+    <p>Original tekst:
+      "{{request.textToTranslate}}"
+    </p>
+    <p>Forslag er oversat til: {{request.languageTarget}}
+
+    </p>
+    <ul>
+      <li *ngFor="let answer of request.answers">
+        {{answer.textTranslated}}
+      </li>
+    </ul>
   </div>
 
 </div>

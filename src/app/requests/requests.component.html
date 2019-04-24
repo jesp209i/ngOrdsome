@@ -2,6 +2,8 @@
 <ul>
   <li *ngFor="let request of requests" (click)="onSelect(request)">
     <span class="badge">{{request.id}}</span> {{request.textToTranslate}} <br />
-    Fra {{request.languageOrigin}} til {{request.languageTarget}}.
+    Fra {{request.languageOrigin}} til {{request.languageTarget}} <br />
+    Svar: {{request.answers.length}}
   </li>
 </ul>
+<app-request-detail [request]="selectedRequest"></app-request-detail>
