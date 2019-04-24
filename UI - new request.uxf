@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>160</x>
+      <y>40</y>
+      <w>1030</w>
+      <h>590</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>160</x>
+      <y>10</y>
+      <w>210</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>bg=light_gray
+Forespørgsler</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>380</x>
+      <y>10</y>
+      <w>210</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>Besvar</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>160</x>
+      <y>40</y>
+      <w>240</w>
+      <h>590</h>
+    </coordinates>
+    <panel_attributes>halign=left
+
+
+
+
+   { tekststreng på orig sp. }
+
+
+
+   { tekststreng på orig sp. }
+
+
+
+   { tekststreng på orig sp. }
+
+
+
+   { tekststreng på orig sp. }
+
+
+
+   { tekststreng på orig sp. }
+
+
+
+   { tekststreng på orig sp. }
+
+
+
+   { tekststreng på orig sp. }
+
+
+
+   { tekststreng på orig sp. }</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>170</x>
+      <y>50</y>
+      <w>220</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>halign=left
++ ny
+bg=light_gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>340</x>
+      <y>100</y>
+      <w>40</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>340</x>
+      <y>160</y>
+      <w>40</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>8</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>340</x>
+      <y>540</y>
+      <w>40</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>340</x>
+      <y>290</y>
+      <w>40</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>340</x>
+      <y>480</y>
+      <w>40</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>9</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>400</x>
+      <y>40</y>
+      <w>790</w>
+      <h>590</h>
+    </coordinates>
+    <panel_attributes>halign=left
+
+      Opret forespørgsel
+
+
+   
+      Hvad vil du have oversat:
+
+
+
+
+
+
+
+
+      
+
+     	                                          Teksten er på: 
+
+
+     	                                          Teksten skal oversætte til:
+
+      
+
+      </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>430</x>
+      <y>160</y>
+      <w>670</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>
+{ inputfelt til 'tekststreng på original sprog' }</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>760</x>
+      <y>350</y>
+      <w>340</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>{ inputfelt til mål sprog }</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>760</x>
+      <y>300</y>
+      <w>340</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>{ inputfelt til kilde sprog }</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>810</x>
+      <y>410</y>
+      <w>290</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>Send forespørgsel</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
