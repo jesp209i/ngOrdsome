@@ -1,9 +1,11 @@
-# Request context
+# Mock UI
+## Request context
 
-![img](../UI - request context.png )
+![img](./UI%20-%20request%20context.png)
 
-# new request
-![img](../UI - new request.png )
+## new request
+![img](./UI%20-%20new%20request.png )
 
-# Answer context
-![img](../UI - answer context.png) 
+## Answer context
+![img](./UI%20-%20answer%20context.png) 
+
