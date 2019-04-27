@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import { CreateRequest } from '../model/dto/createRequest';
 import { Request } from '../model/request';
+import { Answer } from "../model/answer";
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -17,9 +18,8 @@ export class ApiService {
   }
 
   private baseUrl = 'http://127.0.0.1:58882/api/';
-  private createAnswerUrl = 'answers/create';
-  private createRequestUrl = 'requests/create';
-  private getRequestsUrl = 'requests/getall';
+  private getRequestsUrl = 'request/';
+  private getRequestAnswersUrl = '/answers/';
 
   // getRequests
   getRequests(): Observable<Request[]> {
@@ -30,7 +30,7 @@ export class ApiService {
   // addAnswer
   // addRequest
   addRequest(newRequest:CreateRequest): Observable<CreateRequest>{
-    const addRequestUrl = this.baseUrl + this.createRequestUrl;
+    const addRequestUrl = this.baseUrl + this.getRequestsUrl;
     return this.http.post<CreateRequest>(addRequestUrl, newRequest, httpOptions).pipe(catchError(this.handleError<CreateRequest>('addRequest')));
   }
   private handleError<T> (operation = 'operation', result?: T) {
@@ -47,4 +47,8 @@ export class ApiService {
     };
   }
 
+  getAnswers(requestId: number): Observable<Answer[]> {
+    const getUrl = this.baseUrl + this.getRequestsUrl + requestId + this.getRequestAnswersUrl;
+    return this.http.get<Answer[]>(getUrl);
+  }
 }

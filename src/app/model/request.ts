@@ -5,6 +5,7 @@ export class Request {
   textToTranslate: string;
   languageOrigin: string;
   languageTarget: string;
+  noOfAnswers: number;
   answers: Answer[];
 }
 
