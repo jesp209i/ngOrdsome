@@ -14,6 +14,7 @@ export class RequestsComponent implements OnInit {
 
   ngOnInit() {
     this.getRequests();
+    this.selectedRequest = null;
   }
 
   onSelect(request: Request): void {
@@ -23,6 +24,7 @@ export class RequestsComponent implements OnInit {
   getRequests(): void{
     this.apiService.getRequests()
       .subscribe(requests => this.requests = requests);
+    console.log(this.requests.toString());
   }
 
 }

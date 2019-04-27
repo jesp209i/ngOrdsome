@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Request } from '../model/request';
-import {ApiService} from "../service/api.service";
+import {ApiService} from '../service/api.service';
+import {Answer} from '../model/answer';
 
 @Component({
   selector: 'app-request-detail',
@@ -9,15 +10,17 @@ import {ApiService} from "../service/api.service";
 })
 export class RequestDetailComponent implements OnInit {
   @Input() request: Request;
+  answers: Answer[];
 
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {
-    this.getAnswers(this.request.id);
+    this.getAnswers();
   }
-  getAnswers(requestId : number): void{
-    this.apiService.getAnswers(requestId)
-      .subscribe(answers => this.request.answers = answers);
+
+  getAnswers(): void {
+    this.apiService.getAnswers(this.request.id)
+      .subscribe(answers => this.answers = answers);
   }
 
 }

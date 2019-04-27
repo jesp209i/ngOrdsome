@@ -6,13 +6,15 @@ import {HttpClientModule} from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { RequestDetailComponent } from './request-detail/request-detail.component';
 import { RequestsComponent } from './requests/requests.component';
+import { MessagesComponent } from './messages/messages.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     RequestDetailComponent,
-    RequestsComponent
+    RequestsComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,

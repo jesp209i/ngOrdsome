@@ -6,4 +6,6 @@
     Svar: {{request.noOfAnswers}}
   </li>
 </ul>
-<app-request-detail [request]="selectedRequest"></app-request-detail>
+<div *ngIf="selectedRequest != null">
+  <app-request-detail [request]="selectedRequest"></app-request-detail>
+</div>
