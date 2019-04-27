@@ -19,25 +19,38 @@ export class ApiService {
     private messageService: MessageService) {
   }
 
-  private baseUrl = 'http://127.0.0.1:58882/api/';
-  private getRequestsUrl = 'request/';
+  private baseRequestUrl = 'http://127.0.0.1:58882/api/request/';
   private getRequestAnswersUrl = '/answers/';
 
-  // getRequests
+  // http://127.0.0.1:58882/api/request
   getRequests(): Observable<Request[]> {
-    const getUrl = this.baseUrl + this.getRequestsUrl;
-    return this.http.get<Request[]>(getUrl)
+    return this.http.get<Request[]>(this.baseRequestUrl)
       .pipe(
+        tap(_ => this.log('fetched requests')),
         catchError(this.handleError<Request[]>('getRequests', []))
+      );
+  }
+  // http://127.0.0.1:58882/api/request/{requestId}/answers/
+  getAnswers(requestId: number): Observable<Answer[]> {
+    const getUrl = this.baseRequestUrl + requestId.toString() + this.getRequestAnswersUrl;
+    this.log(getUrl);
+    return this.http.get<Answer[]>(getUrl)
+      .pipe(
+        catchError(this.handleError<Answer[]>('getRequests', []))
       );
   }
 
   // addAnswer
   // addRequest
-  addRequest(newRequest: CreateRequest): Observable<CreateRequest>{
-    const addRequestUrl = this.baseUrl + this.getRequestsUrl;
-    return this.http.post<CreateRequest>(addRequestUrl, newRequest, httpOptions)
-      .pipe(catchError(this.handleError<CreateRequest>('addRequest')));
+  addRequest(newRequest: CreateRequest): Observable<CreateRequest> {
+    return this.http.post<CreateRequest>(this.baseRequestUrl, newRequest, httpOptions)
+      .pipe(
+        tap(_ => this.log('//')),
+        catchError(this.handleError<CreateRequest>('addRequest')));
+  }
+
+  private log(message: string) {
+    this.messageService.add(`ApiService: ${message}`);
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
@@ -52,16 +65,5 @@ export class ApiService {
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };
-  }
-
-  getAnswers(requestId: number): Observable<Answer[]> {
-    console.log('ApiService:getAnswers says: ' + requestId);
-    const getUrl = this.baseUrl + this.getRequestsUrl + requestId.toString() + this.getRequestAnswersUrl;
-    console.log('ApiService:getAnswers says: ' + getUrl);
-    return this.http.get<Answer[]>(getUrl);
-  }
-
-  private log(message: string) {
-    this.messageService.add('ApiService: ${message}');
   }
 }

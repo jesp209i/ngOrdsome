@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute} from '@angular/router';
+import { Location} from '@angular/common';
 import { Request } from '../model/request';
 import { ApiService } from '../service/api.service';
 
@@ -9,22 +11,25 @@ import { ApiService } from '../service/api.service';
 })
 export class RequestsComponent implements OnInit {
   requests: Request[];
-  selectedRequest: Request;
-  constructor( private apiService: ApiService) { }
+  selectedRequest: Request = null;
+  constructor( private apiService: ApiService,
+               private route: ActivatedRoute,
+               private location: Location) { }
 
   ngOnInit() {
     this.getRequests();
-    this.selectedRequest = null;
-  }
-
-  onSelect(request: Request): void {
-    this.selectedRequest = request;
+    this.getSelectedRequest();
   }
 
   getRequests(): void{
     this.apiService.getRequests()
       .subscribe(requests => this.requests = requests);
     console.log(this.requests.toString());
+  }
+
+  getSelectedRequest(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.selectedRequest = this.requests.find(request => request.requestId === id);
   }
 
 }

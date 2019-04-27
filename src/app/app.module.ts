@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { RequestDetailComponent } from './request-detail/request-detail.component';
 import { RequestsComponent } from './requests/requests.component';
 import { MessagesComponent } from './messages/messages.component';
+import { AppRoutingModule } from './app-routing.module';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { MessagesComponent } from './messages/messages.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
