@@ -1,7 +1,8 @@
-import {Component, OnInit, Input, SimpleChanges} from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import { Request } from '../model/request';
-import {ApiService} from '../service/api.service';
-import {Answer} from '../model/answer';
+import { ApiService } from '../service/api.service';
+import { Answer } from '../model/answer';
+
 
 @Component({
   selector: 'app-request-detail',
@@ -15,10 +16,9 @@ export class RequestDetailComponent implements OnInit {
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {
-    //this.getAnswers();
   }
 
-  ngOnChanges(changes: SimpleChanges){
+  ngOnChanges(changes: SimpleChanges) {
     this.answers = [];
     this.getAnswers();
   }
@@ -27,5 +27,4 @@ export class RequestDetailComponent implements OnInit {
     this.apiService.getAnswers(this.request.requestId)
       .subscribe(answers => this.answers = answers);
   }
-
 }

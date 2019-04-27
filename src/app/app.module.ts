@@ -8,6 +8,9 @@ import { RequestDetailComponent } from './request-detail/request-detail.componen
 import { RequestsComponent } from './requests/requests.component';
 import { MessagesComponent } from './messages/messages.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AnswersComponent } from './answers/answers.component';
+import { AnswerDetailComponent } from './answer-detail/answer-detail.component';
+import { RequestNewComponent } from './request-new/request-new.component';
 
 
 @NgModule({
@@ -15,7 +18,10 @@ import { AppRoutingModule } from './app-routing.module';
     AppComponent,
     RequestDetailComponent,
     RequestsComponent,
-    MessagesComponent
+    MessagesComponent,
+    AnswersComponent,
+    AnswerDetailComponent,
+    RequestNewComponent
   ],
   imports: [
     BrowserModule,

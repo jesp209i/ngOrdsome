@@ -40,6 +40,16 @@ export class ApiService {
       );
   }
 
+  getRequest(requestId: number): Observable<Request> {
+    const getUrl = this.baseRequestUrl + requestId.toString();
+    this.log(getUrl);
+    return this.http.get<Request>(getUrl)
+      .pipe(
+        tap(_ => this.log(`fetched request with id ${requestId}`)),
+        catchError(this.handleError<Request>('getRequests', ))
+      );
+  }
+
   // addAnswer
   // addRequest
   addRequest(newRequest: CreateRequest): Observable<CreateRequest> {
