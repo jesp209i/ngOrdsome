@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+
 import { MessageService } from '../message.service';
 import { CreateRequest } from '../model/dto/createRequest';
 import {ApiService} from '../service/api.service';
@@ -20,16 +20,16 @@ export class RequestNewComponent implements OnInit {
     this.newRequest.languageTarget = navigator.language;
   }
 
-  onSubmit(){
+  onSubmit() {
     this.apiService.addRequest(this.newRequest)
-      .subscribe(request => { window.location.href = 'http://127.0.0.1:4200/requests'; } );
-    // this.log(`onSubmit:${this.getDiagnostics()}`);
+      .subscribe(() => { window.location.href = 'http://127.0.0.1:4200/requests'; } );
   }
 
-  getDiagnostics(){
+  getDiagnostics() {
     return JSON.stringify(this.newRequest);
   }
-  private log(message: string){
+
+  private log(message: string) {
     this.messageService.add(`RequestNew/${message}`);
   }
 }

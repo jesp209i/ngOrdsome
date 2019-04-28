@@ -26,7 +26,6 @@ export class AnswerDetailComponent implements OnInit, OnChanges {
     this.apiService.getAnswers(this.request.requestId)
       .subscribe((response) => {
         this.request.answers = response.body;
-        this.log(`getAnswers() requestId: ${this.request.requestId} HttpStatus: ${response.status}`);
       });
   }
   log(message: string) {

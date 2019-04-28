@@ -1,5 +1,5 @@
 <div class="border">
-  <form #answerForm="ngForm" (ngSubmit)="onSubmit()">
+  <form #answerForm="ngForm" (ngSubmit)="onSubmit(); answerForm.reset;">
     <div class="form-group row">
       <label for="languageTarget" class="col-md-3 col-form-label" >Oversættes til:</label>
       <div class="col-md-9">
