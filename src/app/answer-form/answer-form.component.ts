@@ -2,6 +2,8 @@ import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core'
 import {CreateAnswer} from '../model/dto/createAnswer';
 import {ApiService} from '../service/api.service';
 import {MessageService} from '../message.service';
+import {Request} from '../model/request';
+import {Answer} from '../model/answer';
 
 @Component({
   selector: 'app-answer-form',
@@ -9,8 +11,7 @@ import {MessageService} from '../message.service';
   styleUrls: ['./answer-form.component.css']
 })
 export class AnswerFormComponent implements OnInit, OnChanges {
-  @Input() requestId: number;
-  @Input() languageTarget: string;
+  @Input() request: Request;
   newAnswer: CreateAnswer = new CreateAnswer();
   constructor(private apiService: ApiService,
               private messageService: MessageService) { }
@@ -19,13 +20,21 @@ export class AnswerFormComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.newAnswer.requestId = this.requestId;
+    this.newAnswer.requestId = this.request.requestId;
   }
   onSubmit() {
     this.log('form submitted');
-    this.apiService.addAnswer(this.newAnswer);
+    this.apiService.addAnswer(this.newAnswer)
+      .subscribe(
+        response => {
+          if (response.status === 204){
+            this.request.answers.push(new Answer());
+            this.request.noOfAnswers++;
+          }
+        }
+      );
     this.newAnswer = new CreateAnswer();
-    this.newAnswer.requestId = this.requestId;
+    this.newAnswer.requestId = this.request.requestId;
   }
   private log(message: string) {
     this.messageService.add(`answerForm: ${message}`);

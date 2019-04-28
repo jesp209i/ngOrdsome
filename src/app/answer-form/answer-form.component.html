@@ -5,7 +5,7 @@
       <div class="col-md-9">
         <input class="form-control"
                id="languageTarget" name="languageTarget"
-               value="{{ languageTarget }}"
+               value="{{ request.languageTarget }}"
                disabled />
       </div>
     </div>
@@ -28,6 +28,5 @@
     <button type="submit" class="btn btn-green" [disabled]="!answerForm.form.valid">Send forslag</button>
       </div>
     </div>
-
   </form>
 </div>

@@ -24,6 +24,6 @@ export class RequestListComponent implements OnInit {
 
   getRequests() {
     this.apiService.getRequests()
-      .subscribe(requests => this.requests = requests);
+      .subscribe(requests => this.requests = requests.body);
   }
 }

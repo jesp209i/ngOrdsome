@@ -3,7 +3,7 @@
     <span style="font-size: .4em; padding:0; margin:0; ">Originalteksten er på <b>{{request.languageOrigin}}</b></span><br/>
     {{request.textToTranslate}}</p>
 
-  <app-answer-form [requestId]="request.requestId" [languageTarget]="request.languageTarget"></app-answer-form>
+  <app-answer-form [request]="request"></app-answer-form>
   <p>Der er {{request.noOfAnswers}} svar:</p>
   <ul class="list-group">
     <li *ngFor="let answer of request.answers"

@@ -1,6 +1,7 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import { Request } from '../model/request';
 import {ApiService} from '../service/api.service';
+import {MessageService} from '../message.service';
 
 @Component({
   selector: 'app-answer-detail',
@@ -9,7 +10,8 @@ import {ApiService} from '../service/api.service';
 })
 export class AnswerDetailComponent implements OnInit, OnChanges {
   @Input() request: Request;
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService,
+              private messageService: MessageService) { }
 
   ngOnInit() {
   }
@@ -22,6 +24,12 @@ export class AnswerDetailComponent implements OnInit, OnChanges {
 
   private getAnswers() {
     this.apiService.getAnswers(this.request.requestId)
-      .subscribe(answers => this.request.answers = answers);
+      .subscribe((response) => {
+        this.request.answers = response.body;
+        this.log(`getAnswers() requestId: ${this.request.requestId} HttpStatus: ${response.status}`);
+      });
+  }
+  log(message: string) {
+    this.messageService.add(`AnswerDetail: ${message}`);
   }
 }
