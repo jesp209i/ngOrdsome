@@ -33,20 +33,9 @@ export class ApiService {
   // http://127.0.0.1:58882/api/request/{requestId}/answers/
   getAnswers(requestId: number): Observable<Answer[]> {
     const getUrl = this.baseRequestUrl + requestId.toString() + this.getRequestAnswersUrl;
-    this.log(getUrl);
     return this.http.get<Answer[]>(getUrl)
       .pipe(
         catchError(this.handleError<Answer[]>('getRequests', []))
-      );
-  }
-
-  getRequest(requestId: number): Observable<Request> {
-    const getUrl = this.baseRequestUrl + requestId.toString();
-    this.log(getUrl);
-    return this.http.get<Request>(getUrl)
-      .pipe(
-        tap(_ => this.log(`fetched request with id ${requestId}`)),
-        catchError(this.handleError<Request>('getRequests', ))
       );
   }
 

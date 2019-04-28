@@ -2,13 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-
 import { AppComponent } from './app.component';
 import { RequestDetailComponent } from './request-detail/request-detail.component';
-import { RequestsComponent } from './requests/requests.component';
+import { RequestListComponent } from './request-list/request-list.component';
 import { MessagesComponent } from './messages/messages.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AnswersComponent } from './answers/answers.component';
+import { AnswerListComponent } from './answer-list/answer-list.component';
 import { AnswerDetailComponent } from './answer-detail/answer-detail.component';
 import { RequestNewComponent } from './request-new/request-new.component';
 
@@ -17,11 +16,11 @@ import { RequestNewComponent } from './request-new/request-new.component';
   declarations: [
     AppComponent,
     RequestDetailComponent,
-    RequestsComponent,
+    RequestListComponent,
     MessagesComponent,
-    AnswersComponent,
+    AnswerListComponent,
     AnswerDetailComponent,
-    RequestNewComponent
+    RequestNewComponent,
   ],
   imports: [
     BrowserModule,
