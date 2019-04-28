@@ -1,8 +1,16 @@
 <div *ngIf="request; else elseBlock">
-  <p style="font-size: 1.8em;"><span style="font-size: .4em; padding:0; margin:0; ">Originaltekst:</span><br/>{{request.textToTranslate}}</p>
-  <p>Oversat fra <b>{{request.languageOrigin}}</b> til <b>{{request.languageTarget}}</b> og har {{request.noOfAnswers}} svar</p>
+  <p style="font-size: 1.8em;">
+    <span style="font-size: .4em; padding:0; margin:0; ">Originalteksten er på <b>{{request.languageOrigin}}</b></span><br/>
+    {{request.textToTranslate}}</p>
+
+  <app-answer-form [requestId]="request.requestId" [languageTarget]="request.languageTarget"></app-answer-form>
+  <p>Der er {{request.noOfAnswers}} svar:</p>
   <ul class="list-group">
-    <li *ngFor="let answer of request.answers" class="list-group-item" style="background: #EEF1F7; text-decoration-color: #698187; margin-bottom: 2px;">{{ answer.textTranslated }}</li>
+    <li *ngFor="let answer of request.answers"
+        class="list-group-item d-flex justify-content-between align-items-center">
+      {{ answer.textTranslated }}
+      <span><a href="#">up vote</a> / <a href="#">down vote</a></span>
+    </li>
   </ul>
 </div>
 <ng-template #elseBlock><p>Hvilken forespørgsel vil du besvare?</p></ng-template>

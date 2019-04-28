@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AnswerListComponent } from './answer-list/answer-list.component';
 import { AnswerDetailComponent } from './answer-detail/answer-detail.component';
 import { RequestNewComponent } from './request-new/request-new.component';
+import { AnswerFormComponent } from './answer-form/answer-form.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { RequestNewComponent } from './request-new/request-new.component';
     AnswerListComponent,
     AnswerDetailComponent,
     RequestNewComponent,
+    AnswerFormComponent,
   ],
   imports: [
     BrowserModule,
