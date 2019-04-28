@@ -26,4 +26,8 @@ export class RequestListComponent implements OnInit {
     this.apiService.getRequests()
       .subscribe(requests => this.requests = requests.body);
   }
+
+  jsonModel() {
+    return JSON.stringify(this.requests);
+  }
 }
