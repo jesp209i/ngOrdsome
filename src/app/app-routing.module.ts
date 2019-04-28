@@ -6,10 +6,10 @@ import {RequestNewComponent} from './request-new/request-new.component';
 import {RequestDetailComponent} from './request-detail/request-detail.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/requests', pathMatch: 'full'},
+  { path: '', redirectTo: '/new/request', pathMatch: 'full'},
   { path: 'requests', component: RequestListComponent },
-  { path: 'requests/:id', component: RequestDetailComponent },
-  { path: 'requests/new', component: RequestNewComponent},
+//  { path: 'request/:id', component: RequestDetailComponent },
+  { path: 'new/request', component: RequestNewComponent},
   { path: 'answers', component: AnswerListComponent }
 
 ]

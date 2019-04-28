@@ -1,10 +1,18 @@
-<ul class="list-group">
-  <li class="list-group-item list-group-item-success"><a routerLink="/request/new" class="d-flex justify-content-between align-items-center">Opret ny forespørgsel<span class="badge badge-primary badge-pill">+</span></a></li>
-  <li *ngFor="let request of requests" class="list-group-item"
-  [class.selected]="request === selectedRequest"><a routerLink="/request/{{request.requestId}}">
-    <div class="d-flex justify-content-between align-items-center" style="width=100%;">
-      {{request.textToTranslate}}
-      <span *ngIf="request.noOfAnswers > 0" class="badge badge-primary badge-pill">{{request.noOfAnswers}}</span></div>
-      <span style="font-size: .8em"> {{request.languageOrigin}} <img src="/assets/arrow.png" /> {{request.languageTarget}}</span></a>
-  </li>
-</ul>
+<div class="row">
+  <div class="col-sm-3">
+    <ul class="list-group">
+      <li *ngFor="let request of requests" class="list-group-item"
+      [class.selected]="request === selectedRequest"
+      (click)="onSelect(request)"
+      >
+        <div class="d-flex justify-content-between align-items-center" style="width=100%;">
+          {{request.textToTranslate}}
+          <span *ngIf="request.noOfAnswers > 0" class="badge badge-primary badge-pill">{{request.noOfAnswers}}</span></div>
+          <span style="font-size: .8em"> {{request.languageOrigin}} <img src="/assets/arrow.png" /> {{request.languageTarget}}</span>
+      </li>
+    </ul>
+  </div>
+  <div class="col-sm-9">
+    <app-request-detail [request]="selectedRequest"></app-request-detail>
+  </div>
+</div>

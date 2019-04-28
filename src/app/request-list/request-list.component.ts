@@ -1,5 +1,6 @@
 import {Component, Input, OnInit, SimpleChanges, OnChanges} from '@angular/core';
 import { Request } from '../model/request';
+import {ApiService} from '../service/api.service';
 
 
 @Component({
@@ -8,12 +9,21 @@ import { Request } from '../model/request';
   styleUrls: ['./request-list.component.css']
 })
 export class RequestListComponent implements OnInit {
-  @Input() requests: Request[];
-  @Input() request: Request;
+  requests: Request[];
+  selectedRequest: Request;
 
-  constructor() { }
+  constructor(private apiService: ApiService) { }
 
   ngOnInit() {
+    this.getRequests();
   }
 
+  onSelect(request: Request) {
+    this.selectedRequest = request;
+  }
+
+  getRequests() {
+    this.apiService.getRequests()
+      .subscribe(requests => this.requests = requests);
+  }
 }

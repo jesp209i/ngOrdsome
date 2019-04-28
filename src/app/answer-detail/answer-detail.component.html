@@ -1,3 +1,8 @@
-<p>
-  answer-detail works!
-</p>
+<div *ngIf="request; else elseBlock">
+  <p style="font-size: 1.8em;"><span style="font-size: .4em; padding:0; margin:0; ">Originaltekst:</span><br/>{{request.textToTranslate}}</p>
+  <p>Oversat fra <b>{{request.languageOrigin}}</b> til <b>{{request.languageTarget}}</b> og har {{request.noOfAnswers}} svar</p>
+  <ul class="list-group">
+    <li *ngFor="let answer of request.answers" class="list-group-item" style="background: #EEF1F7; text-decoration-color: #698187; margin-bottom: 2px;">{{ answer.textTranslated }}</li>
+  </ul>
+</div>
+<ng-template #elseBlock><p>Hvilken forespørgsel vil du besvare?</p></ng-template>
