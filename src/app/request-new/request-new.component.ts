@@ -18,6 +18,7 @@ export class RequestNewComponent implements OnInit {
 
   ngOnInit() {
     this.newRequest.languageTarget = navigator.language;
+    this.log('visited');
   }
 
   onSubmit() {
@@ -30,6 +31,6 @@ export class RequestNewComponent implements OnInit {
   }
 
   private log(message: string) {
-    this.messageService.add(`RequestNew/${message}`);
+    this.messageService.add(`RequestNew: ${message}`);
   }
 }

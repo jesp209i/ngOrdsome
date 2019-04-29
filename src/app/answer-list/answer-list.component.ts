@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Request } from '../model/request';
 import { ApiService} from '../service/api.service';
+import {MessageService} from "../message.service";
 
 @Component({
   selector: 'app-answers',
@@ -11,10 +12,12 @@ export class AnswerListComponent implements OnInit {
   requests: Request[];
   selectedRequest: Request;
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService,
+              private messageService: MessageService) { }
 
   ngOnInit() {
     this.getRequests();
+    this.log(`visited`);
   }
 
   getRequests() {
@@ -23,5 +26,8 @@ export class AnswerListComponent implements OnInit {
   }
   onSelect(request: Request) {
     this.selectedRequest = request;
+  }
+  private log(message: string){
+    this.messageService.add(`AnswerList: ${message}`)
   }
 }
