@@ -7,5 +7,6 @@ export class Request {
   languageTarget: string;
   noOfAnswers: number;
   answers: Answer[];
+  isClosed: boolean;
 }
 
