@@ -1,9 +1,14 @@
 <div *ngIf="request; else elseBlock">
   <p style="font-size: 1.8em;"><span style="font-size: .4em; padding:0; margin:0; ">Originaltekst:</span><br/>{{request.textToTranslate}}</p>
   <p>Oversat fra <b>{{request.languageOrigin}}</b> til <b>{{request.languageTarget}}</b> og har {{request.noOfAnswers}} svar</p>
+  <div class="request-status" (click)="changeRequestStatus()" [class.closed-request]="request.isClosed">Denne forespørgsel er <span *ngIf="request.isClosed; else requestClosed">lukket</span>.</div>
   <ul class="list-group">
-    <li *ngFor="let answer of request.answers" class="list-group-item" style="background: #EEF1F7; text-decoration-color: #698187; margin-bottom: 2px;">{{ answer.textTranslated }}</li>
+    <li *ngFor="let answer of request.answers" class="list-group-item d-flex justify-content-between align-items-center">
+      {{ answer.textTranslated }}
+      <div (click)="changeAnswerStatus(answer)" [class.is-preferred-answer]="answer.isPreferred" class="answer-vote"></div>
+    </li>
   </ul>
 </div>
 <ng-template #elseBlock><p>Vælg en forespørgsel</p></ng-template>
+<ng-template #requestClosed>åben</ng-template>
 

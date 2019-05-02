@@ -1,5 +1,6 @@
-export class Answer{
-  id: number;
+export class Answer {
+  answerId: number;
   textTranslated: string;
   requestId: number;
+  isPreferred: boolean;
 }

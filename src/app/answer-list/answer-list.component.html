@@ -3,8 +3,8 @@
     <ul class="list-group">
       <li *ngFor="let request of requests" class="list-group-item"
           [class.selected]="request === selectedRequest"
-          (click)="onSelect(request)"
-      >
+          [class.hide]="request.isClosed"
+          (click)="onSelect(request)">
         <div class="d-flex justify-content-between align-items-center" style="width=100%;">
           {{request.textToTranslate}}
           <span *ngIf="request.noOfAnswers > 0" class="badge badge-primary badge-pill">{{request.noOfAnswers}}</span></div>

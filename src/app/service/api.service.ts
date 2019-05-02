@@ -20,11 +20,17 @@ export class ApiService {
   private baseRequestUrl = 'http://127.0.0.1:58882/api/request/';
   private getRequestAnswersUrl = '/answers/';
   private postRequestAnswerUrl = '/answer';
+  private patchRequestClose = '/close';
+  private patchAnswerPreffered = '/correct';
 
   // public methods for retrieving data from api
   // http://127.0.0.1:58882/api/request
   getRequests(): Observable<HttpResponse<Request[]>> {
     return this.fetch<Request[]>(this.baseRequestUrl, 'getRequests');
+  }
+  getRequest(requestId: number): Observable<HttpResponse<Request>> {
+    const getRequestUrl = `${this.baseRequestUrl}${requestId}`;
+    return this.fetch<Request>(getRequestUrl, `getRequest(${requestId})`);
   }
   // http://127.0.0.1:58882/api/request/{requestId}/answers/
   getAnswers(requestId: number): Observable<HttpResponse<Answer[]>> {
@@ -44,13 +50,22 @@ export class ApiService {
     return this.add<CreateRequest>(newRequest, postUrl, 'addRequest');
   }
 
+  changeRequestStatus(request: Request): Observable<HttpResponse<Request>> {
+    const patchUrl = `${this.baseRequestUrl}${request.requestId}${this.patchRequestClose}`;
+    return this.patch(patchUrl, {isClosed: request.isClosed}, 'changeRequestStatus');
+  }
+
+  preferedAnswer(answer: Answer): Observable<{}> {
+    const patchUrl = `${this.baseRequestUrl}${answer.requestId}${this.getRequestAnswersUrl}${answer.answerId}`;
+    return this.patch(patchUrl, {isPreferred: answer.isPreferred}, 'preferredAnswer');
+  }
+
   //
   // private methods add<T> and fetch<T> provides httpGet and httpPost requests
   // by the use of generics
   //
   private add<T>(newRequest: T, postUrl: string, sender: string): Observable<HttpResponse<T>> {
-    return this.http.post<T>(postUrl,
-      newRequest,
+    return this.http.post<T>(postUrl, newRequest,
       { headers: {'Content-Type': 'application/json'}, observe: 'response'})
       .pipe(
         tap(response => this.log(`${sender} was called: ${postUrl} returns ${response.status}`)),
@@ -59,6 +74,14 @@ export class ApiService {
 
   private fetch<T>(getUrl: string, sender: string): Observable<HttpResponse<T>> {
     return this.http.get<T>(getUrl, {observe: 'response'})
+      .pipe(
+        tap(response => this.log(`${sender} was called: ${getUrl} returns: ${response.status}`)),
+        catchError(this.handleError<HttpResponse<T>>(`${sender}`)));
+  }
+
+  private patch<T>(getUrl: string, jsonPatch, sender: string): Observable<HttpResponse<T>> {
+    return this.http.patch<T>(getUrl, jsonPatch,
+      { headers: {'Content-Type': 'application/json'}, observe: 'response'})
       .pipe(
         tap(response => this.log(`${sender} was called: ${getUrl} returns: ${response.status}`)),
         catchError(this.handleError<HttpResponse<T>>(`${sender}`)));

@@ -8,7 +8,7 @@ import { MessageService} from './message.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'ngOrdsome';
   myPath: string;
   constructor(private router: Router,
@@ -16,7 +16,7 @@ export class AppComponent implements OnInit{
               private messageService: MessageService) {}
   ngOnInit() {
     this.router.events.subscribe( event => {
-      //this.log(this.location.path());
+      // this.log(this.location.path());
       this.myPath = this.location.path();
     });
   }
