@@ -1,4 +1,10 @@
-h1 {
+li a.navbar-brand {
   color: #0EA396;
   font-weight: bolder;
 }
+
+li a.active {
+  background: #0EA396;
+
+}
+
