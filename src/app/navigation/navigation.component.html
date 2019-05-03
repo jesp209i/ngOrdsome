@@ -1,0 +1,19 @@
+<div class="container-fluid">
+  <h1>{{ title }}</h1>
+  <div class="row">
+    <ul class="nav nav-tabs" >
+      <li class="nav-item" id="new">
+        <a routerLink="/new/request" class="nav-link" [class.active]="myPath==='/new/request'">Ny forespørgsel</a>
+      </li>
+      <li class="nav-item" id="requests">
+        <a routerLink="/requests" class="nav-link" [class.active]="myPath==='/requests'">Mine forespørgsler</a>
+      </li>
+      <li class="nav-item" id="answers">
+        <a routerLink="/answers" class="nav-link" [class.active]="myPath==='/answers'">Besvar forespørgsler</a>
+      </li>
+      <li class="nav-item" id="settings">
+        <a routerLink="/settings" class="nav-link" [class.active]="myPath==='/settings'">Indstillinger</a>
+      </li>
+    </ul>
+  </div>
+</div>

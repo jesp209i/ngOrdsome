@@ -12,6 +12,7 @@ import { AnswerDetailComponent } from './answer-detail/answer-detail.component';
 import { RequestNewComponent } from './request-new/request-new.component';
 import { AnswerFormComponent } from './answer-form/answer-form.component';
 import { OrdsomeSettingsComponent } from './ordsome-settings/ordsome-settings.component';
+import { NavigationComponent } from './navigation/navigation.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { OrdsomeSettingsComponent } from './ordsome-settings/ordsome-settings.co
     RequestNewComponent,
     AnswerFormComponent,
     OrdsomeSettingsComponent,
+    NavigationComponent,
   ],
   imports: [
     BrowserModule,
