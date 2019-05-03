@@ -1,7 +1,7 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {CreateAnswer} from '../model/dto/createAnswer';
 import {ApiService} from '../service/api.service';
-import {MessageService} from '../message.service';
+import {MessageService} from '../service/message.service';
 import {Request} from '../model/request';
 import {Answer} from '../model/answer';
 

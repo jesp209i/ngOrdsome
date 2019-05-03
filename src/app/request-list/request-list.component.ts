@@ -1,7 +1,7 @@
 import {Component, Input, OnInit, SimpleChanges, OnChanges} from '@angular/core';
 import { Request } from '../model/request';
 import {ApiService} from '../service/api.service';
-import {MessageService} from "../message.service";
+import {MessageService} from "../service/message.service";
 
 
 @Component({

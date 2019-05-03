@@ -5,7 +5,7 @@ import { catchError, tap } from 'rxjs/operators';
 import { CreateRequest } from '../model/dto/createRequest';
 import { Request } from '../model/request';
 import { Answer } from '../model/answer';
-import { MessageService } from '../message.service';
+import { MessageService } from './message.service';
 import {CreateAnswer} from '../model/dto/createAnswer';
 
 @Injectable({

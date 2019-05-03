@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Request } from '../model/request';
 import { ApiService} from '../service/api.service';
-import {MessageService} from "../message.service";
+import {MessageService} from "../service/message.service";
 
 @Component({
   selector: 'app-answers',
