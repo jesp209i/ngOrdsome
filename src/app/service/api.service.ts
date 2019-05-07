@@ -17,14 +17,15 @@ export class ApiService {
     private messageService: MessageService) {
   }
 
-  private baseRequestUrl = 'http://127.0.0.1:58882/api/request/';
+  private baseRequestUrl = 'http://127.0.0.1:7000/api/requests/';
   private getRequestAnswersUrl = '/answers/';
   private postRequestAnswerUrl = '/answer';
-  private patchRequestClose = '/close';
-  private patchAnswerPreffered = '/correct';
+  private patchRequestClose = 'isClosed';
+  private patchAnswerPreffered = 'http://127.0.0.1:7000/api/answers/isPreferred';
+
 
   // public methods for retrieving data from api
-  // http://127.0.0.1:58882/api/request
+  // http://127.0.0.1:7000/api/requests
   getRequests(): Observable<HttpResponse<Request[]>> {
     return this.fetch<Request[]>(this.baseRequestUrl, 'getRequests');
   }
@@ -32,32 +33,34 @@ export class ApiService {
     const getRequestUrl = `${this.baseRequestUrl}${requestId}`;
     return this.fetch<Request>(getRequestUrl, `getRequest(${requestId})`);
   }
-  // http://127.0.0.1:58882/api/request/{requestId}/answers/
+  // http://127.0.0.1:7000/api/requests/{requestId}/answers/
   getAnswers(requestId: number): Observable<HttpResponse<Answer[]>> {
     const getUrl = `${this.baseRequestUrl}${requestId}${this.getRequestAnswersUrl}`;
     return this.fetch<Answer[]>(getUrl, 'getAnswers');
   }
 
   // public methods for sending data to api
-  // http://127.0.0.1:58882/api/request/{requestId}/answer/}
+  // http://127.0.0.1:7000/api/requests/{requestId}/answer/}
   addAnswer(newAnswer: CreateAnswer): Observable<HttpResponse<CreateAnswer>> {
     const postUrl = this.baseRequestUrl + newAnswer.requestId + this.postRequestAnswerUrl;
     return this.add<CreateAnswer>(newAnswer, postUrl, 'addAnswer');
   }
-  // http://127.0.0.1:58882/api/request/
+  // http://127.0.0.1:7000/api/requests/
   addRequest(newRequest: CreateRequest): Observable<HttpResponse<CreateRequest>> {
     const postUrl = this.baseRequestUrl;
     return this.add<CreateRequest>(newRequest, postUrl, 'addRequest');
   }
-
+  // http://127.0.0.1:7000/api/requests/isClosed
   changeRequestStatus(request: Request): Observable<HttpResponse<Request>> {
-    const patchUrl = `${this.baseRequestUrl}${request.requestId}${this.patchRequestClose}`;
-    return this.patch(patchUrl, {isClosed: request.isClosed}, 'changeRequestStatus');
+    const patchUrl = `${this.baseRequestUrl}${this.patchRequestClose}`;
+    return this.patch(patchUrl, { requestId: request.requestId, isClosed: request.isClosed}, 'changeRequestStatus');
   }
-
+  // http://127.0.0.1:7000/api/answers/isPreferred
   preferedAnswer(answer: Answer): Observable<{}> {
-    const patchUrl = `${this.baseRequestUrl}${answer.requestId}${this.getRequestAnswersUrl}${answer.answerId}`;
-    return this.patch(patchUrl, {isPreferred: answer.isPreferred}, 'preferredAnswer');
+    this.log(`preferredAnswer called`);
+    const patchUrl = this.patchAnswerPreffered;
+    return this.patch(patchUrl,
+      {requestId: answer.requestId, answerId: answer.answerId, isPreferred: answer.isPreferred}, 'preferredAnswer');
   }
 
   //

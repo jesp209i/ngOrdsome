@@ -63,17 +63,15 @@ export class RequestDetailComponent implements OnChanges {
         });
     }
     changeAnswerStatus(answer: Answer) {
-    this.log(`${answer.isPreferred}`);
-    if (answer.isPreferred === true) {
+    const isPreferred = answer.isPreferred;
+    if (isPreferred === true) {
         answer.isPreferred = false;
-      } else if (answer.isPreferred === false || answer.isPreferred === undefined) {
+      } else if (isPreferred === false || isPreferred === undefined) {
         answer.isPreferred = true;
       }
+    this.apiService.preferedAnswer(answer).subscribe( response => {
+      this.getAnswers(answer.requestId);
+    });
     this.log(`changeAnswerStatus changed answer ${answer.answerId} to isPreferred = ${answer.isPreferred}`);
-    //
-    // needs to save the state of answer
-    // Api not ready yet
-    // This is just for show
-    //
   }
 }
