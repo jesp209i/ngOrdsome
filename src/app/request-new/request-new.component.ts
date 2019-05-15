@@ -17,13 +17,13 @@ export class RequestNewComponent implements OnInit {
   private newRequest: CreateRequest = new CreateRequest();
 
   ngOnInit() {
-    this.newRequest.languageTarget = navigator.language;
+    // this.newRequest.languageTarget = navigator.language;
     this.log('visited');
   }
 
   onSubmit() {
     this.apiService.addRequest(this.newRequest)
-      .subscribe(() => { window.location.href = 'http://127.0.0.1:4200/requests'; } );
+      .subscribe(() => { this.log(`onSubmit clicked`); } );
   }
 
   getDiagnostics() {

@@ -17,7 +17,8 @@ export class ApiService {
     private messageService: MessageService) {
   }
 
-  private baseRequestUrl = 'http://127.0.0.1:7000/api/requests/';
+  private baseRequestUrl = '' +
+    '';
   private getRequestAnswersUrl = '/answers/';
   private postRequestAnswerUrl = '/answer';
   private patchRequestClose = 'isClosed';
