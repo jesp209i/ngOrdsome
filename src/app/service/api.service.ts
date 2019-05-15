@@ -22,6 +22,7 @@ export class ApiService {
   private postRequestAnswerUrl = '/answer';
   private patchRequestClose = 'isClosed';
   private patchAnswerPreffered = 'http://127.0.0.1:7000/api/answers/isPreferred';
+  private getUserId = 'http://127.0.0.1:7000/api/users/new';
 
 
   // public methods for retrieving data from api
@@ -102,5 +103,9 @@ export class ApiService {
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };
+  }
+
+  newUserId() {
+
   }
 }
