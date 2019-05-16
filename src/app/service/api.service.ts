@@ -7,6 +7,7 @@ import { Request } from '../model/request';
 import { Answer } from '../model/answer';
 import { MessageService } from './message.service';
 import {CreateAnswer} from '../model/dto/createAnswer';
+import {Language} from '../model/language';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,11 @@ export class ApiService {
   getRequests(): Observable<HttpResponse<Request[]>> {
     return this.fetch<Request[]>(this.baseRequestUrl, 'getRequests');
   }
+  // http://127.0.0.1:7000/api/users/new
+  newUserId(): Observable<HttpResponse<string>> {
+    return this.fetch<string>(this.getUserId, 'newUserId');
+  }
+  // http://127.0.0.1:7000/api/requests/{requestId}
   getRequest(requestId: number): Observable<HttpResponse<Request>> {
     const getRequestUrl = `${this.baseRequestUrl}${requestId}`;
     return this.fetch<Request>(getRequestUrl, `getRequest(${requestId})`);
@@ -105,7 +111,8 @@ export class ApiService {
     };
   }
 
-  newUserId() {
-
+  getLanguages(): Observable<HttpResponse<Language[]>> {
+    const url = `${this.baseRequestUrl}languages`;
+    return this.fetch<Language[]>(url, 'getLanguages');
   }
 }
