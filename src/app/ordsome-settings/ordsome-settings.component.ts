@@ -14,9 +14,7 @@ export class OrdsomeSettingsComponent implements OnInit {
               private ordsomeService: OrdsomeService) { }
 
   ngOnInit() {
-    //localStorage.setItem('userGuid', this.guid);
     this.log(`visited`);
-    this.localUserGuid = localStorage.getItem('userGuid');
   }
 
   private log(message: string) {

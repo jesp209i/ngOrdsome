@@ -5,6 +5,7 @@ import { CreateRequest } from '../model/dto/createRequest';
 import { ApiService } from '../service/api.service';
 import { OrdsomeService } from '../service/ordsome.service';
 import { Language } from '../model/language';
+import {CallbackInterface} from '../service/interface/callbackInterface';
 
 @Component({
   selector: 'app-request-new',
@@ -19,13 +20,18 @@ export class RequestNewComponent implements OnInit, CallbackInterface {
   ) { }
 
   private newRequest: CreateRequest = new CreateRequest();
-   private languageList: Language[];
+  private languageList: Language[];
+  private userId: string;
 
   ngOnInit() {
     // this.newRequest.languageTarget = navigator.language;
     this.log('visited');
     if (this.languageList === undefined || this.languageList.length === 0 ) {
       this.ordsomeService.getLanguages(this);
+    }
+    if (this.userId === undefined) {
+      this.userId = this.ordsomeService.userId;
+      this.log(this.userId);
     }
   }
 
