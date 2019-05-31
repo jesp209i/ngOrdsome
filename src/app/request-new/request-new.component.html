@@ -11,19 +11,19 @@
     </div>
   </div>
   <div class="form-group row">
-  <label for="languageOrigin" class="col-sm-3 col-form-label">Hvilket sprog er teksten på?</label>
+  <label for="languageOriginId" class="col-sm-3 col-form-label">Hvilket sprog er teksten på?</label>
     <div class="col-sm-9">
-  <input type="text" class="form-control"
-         id="languageOrigin" name="languageOrigin"
-         [(ngModel)]="newRequest.languageOrigin" required />
+      <select [(ngModel)]="newRequest.languageOriginId" class="form-control" required id="languageOriginId" name="languageOriginId">
+        <option *ngFor="let language of languageList" [value]="language.id">{{language.name}}</option>
+      </select>
     </div>
   </div>
     <div class="form-group row">
-    <label for="languageTarget" class="col-sm-3 col-form-label" >Hvilket sprog skal teksten oversættes til?</label>
+    <label for="languageTargetId" class="col-sm-3 col-form-label" >Hvilket sprog skal teksten oversættes til?</label>
       <div class="col-sm-9">
-  <input type="text" class="form-control"
-         id="languageTarget" name="languageTarget"
-         [(ngModel)]="newRequest.languageTarget" required />
+        <select [(ngModel)]="newRequest.languageTargetId" class="form-control" required id="languageTargetId" name="languageTargetId">
+          <option *ngFor="let language of languageList" [value]="language.id">{{language.name}}</option>
+        </select>
       </div>
     </div>
   <button type="submit" class="btn btn-green" [disabled]="!requestForm.form.valid">Send forespørgsel</button>
