@@ -1,7 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import { Router } from '@angular/router';
-import { Location } from '@angular/common';
-import { MessageService} from './service/message.service';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +8,8 @@ import { MessageService} from './service/message.service';
 export class AppComponent implements OnInit {
   title = 'ngOrdsome';
 
-  constructor() {}
+  constructor() {
+  }
   ngOnInit() {
 
   }

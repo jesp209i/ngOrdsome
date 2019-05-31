@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MessageService} from '../service/message.service';
-import {ApiService} from '../service/api.service';
+import {OrdsomeService} from '../service/ordsome.service';
 
 @Component({
   selector: 'app-ordsome-settings',
@@ -9,15 +9,12 @@ import {ApiService} from '../service/api.service';
 })
 export class OrdsomeSettingsComponent implements OnInit {
 
-  private guid = 'ffb73ec5-f6d2-4b89-a50a-9ae5d8e727b3';
   localUserGuid: string;
   constructor(private messageService: MessageService,
-              private apiService: ApiService) { }
+              private ordsomeService: OrdsomeService) { }
 
   ngOnInit() {
-    //localStorage.setItem('userGuid', this.guid);
     this.log(`visited`);
-    this.localUserGuid = localStorage.getItem('userGuid');
   }
 
   private log(message: string) {
