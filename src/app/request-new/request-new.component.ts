@@ -19,9 +19,9 @@ export class RequestNewComponent implements OnInit, CallbackInterface {
                private ordsomeService: OrdsomeService
   ) { }
 
-  private newRequest: CreateRequest = new CreateRequest();
-  private languageList: Language[];
-  private userId: string;
+  public newRequest: CreateRequest = new CreateRequest();
+  public languageList: Language[];
+  public userId: string;
 
   ngOnInit() {
     // this.newRequest.languageTarget = navigator.language;

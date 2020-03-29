@@ -11,7 +11,7 @@ export class OrdsomeSettingsComponent implements OnInit {
 
   localUserGuid: string;
   constructor(private messageService: MessageService,
-              private ordsomeService: OrdsomeService) { }
+              public ordsomeService: OrdsomeService) { }
 
   ngOnInit() {
     this.log(`visited`);
